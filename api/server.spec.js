@@ -21,5 +21,35 @@ describe("server", () => {
       expect(res.body.api).toBe("up");
     });
   });
+
+
+  describe("POST request", ()=>{
+    // beforeEach(async () => {
+    //   // trucate or empty the hobbits table
+    //   await db("ff7").truncate();
+    // });
+    it('should post a 201 when correct data is posted', ()=>{
+      return supertest(server)
+      .post('/character').send({name:'Aerith'}).then(res => {
+        expect(res.status).toBe(201)
+      })
+    })
+    it('should post a 400 when passed incorrect data', () =>{
+      return supertest(server)
+      .post('/character').send({}).then(res=>{
+        expect(res.status).toBe(400)
+      })
+    })
+  })
+
+
+  describe('DELETE request', ()=>{
+    it('should post a 204 error code when character is deleted', ()=>{
+      return supertest(server)
+      .delete('/character/4').then(res=>{
+        expect(res.status).toBe()
+      })
+    })
+  })
   
 });

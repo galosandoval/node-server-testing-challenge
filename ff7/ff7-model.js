@@ -16,7 +16,7 @@ async function add(user) {
 }
 
 function remove(id) {
-  return db("ff7").where({ id }).del();
+  return db("ff7").where('id', id).del();
 }
 
 function findById(id) {
