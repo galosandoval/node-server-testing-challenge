@@ -46,8 +46,14 @@ describe("server", () => {
   describe('DELETE request', ()=>{
     it('should post a 204 error code when character is deleted', ()=>{
       return supertest(server)
-      .delete('/character/4').then(res=>{
-        expect(res.status).toBe()
+      .delete('/character/5').then(res=>{
+        expect(res.status).toBe(204)
+      })
+    })
+    it('should post an error message if id is not found', () => {
+      return supertest(server)
+      .delete('/character/100').then(res=>{
+        expect(res.body.message).toBe('Could not find scheme with given id')
       })
     })
   })
