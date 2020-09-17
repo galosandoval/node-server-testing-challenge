@@ -4,11 +4,6 @@ const server = require("./server");
 const db = require("../data/connection");
 
 describe("server", () => {
-  // describe("environment", () => {
-  //   it('should set the DB_ENV variable to "testing"', () => {
-  //     expect(process.env.DB_ENV).toBe("testing");
-  //   });
-  // });
   describe("GET request", () => {
     it("should return with a HTTP status 200", () => {
       return supertest(server).get('/character').then(res=> {
